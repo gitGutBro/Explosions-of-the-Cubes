@@ -8,7 +8,7 @@ public class Exploder
     [Header("Explode Properties")]
     [SerializeField][Range(1f, 300f)] private float _radius;
     [SerializeField][Range(1f, 300f)] private float _force;
-    //
+    
     public void Explode(List<ExplosiveCube> cubes)
     {
         foreach (ExplosiveCube cube in cubes)
