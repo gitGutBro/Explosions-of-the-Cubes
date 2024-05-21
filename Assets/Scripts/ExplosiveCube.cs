@@ -27,7 +27,8 @@ public class ExplosiveCube : MonoBehaviour
         ExplosiveCube[] cubesForSplit = _spliter.GetCubesForSplit(this);
         List<ExplosiveCube> splitedCubes = GetSplitedCubes(cubesForSplit);
 
-        _exploder.Explode(splitedCubes);
+        Exploding();
+
         gameObject.SetActive(false);
     }
 
@@ -44,6 +45,16 @@ public class ExplosiveCube : MonoBehaviour
 
         return splitedCubes;
     }
+
+    private void Exploding()
+    {
+        Collider[] colliders = Physics.OverlapBox(transform.position, _exploder.Scanner.Radius);
+
+        _exploder.Explode(_exploder.Scanner.GetCubesForExplode(colliders), transform.position, GetInverseProportionalityValue());
+    }
+
+    private float GetInverseProportionalityValue() =>
+        Exploder.MaxCubeSize * (Exploder.MinForceMultiplier / (transform.localScale.x + transform.localScale.y / 2));
 
     private void Init()
     {
