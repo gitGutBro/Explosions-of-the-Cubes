@@ -14,9 +14,11 @@ public class Exploder
 
     [field: SerializeField] public AreaScanner Scanner { get; private set; }
 
-    public void Explode(List<ExplosiveCube> cubes, Vector3 explodePoint, float forceMultiplier)
+    public void Explode(Vector3 explodePoint, float forceMultiplier)
     {
-        foreach (ExplosiveCube cube in cubes)
+        List<ExplosiveCube> cubeForExplode = Scanner.GetCubesForExplode(explodePoint);
+
+        foreach (ExplosiveCube cube in cubeForExplode)
             cube.Rigidbody.AddExplosionForce(_force * forceMultiplier, explodePoint, _radius);
     }
 }

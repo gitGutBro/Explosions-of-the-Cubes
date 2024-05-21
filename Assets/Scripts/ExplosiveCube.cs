@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Renderer))]
@@ -25,36 +24,25 @@ public class ExplosiveCube : MonoBehaviour
     private void ExplosivelySplitUp()
     {
         ExplosiveCube[] cubesForSplit = _spliter.GetCubesForSplit(this);
-        List<ExplosiveCube> splitedCubes = GetSplitedCubes(cubesForSplit);
 
+        SplitUp(cubesForSplit);
         Exploding();
 
         gameObject.SetActive(false);
     }
 
-    private List<ExplosiveCube> GetSplitedCubes(ExplosiveCube[] cubes)
+    private void SplitUp(ExplosiveCube[] cubes)
     {
-        List<ExplosiveCube> splitedCubes = new();
-
         foreach (ExplosiveCube cube in cubes)
         {
             ExplosiveCube newCube = Instantiate(cube);
             newCube.ChangeColor();
-            splitedCubes.Add(newCube);
         }
-
-        return splitedCubes;
     }
 
-    private void Exploding()
-    {
-        Collider[] colliders = Physics.OverlapBox(transform.position, _exploder.Scanner.Radius);
-
-        _exploder.Explode(_exploder.Scanner.GetCubesForExplode(colliders), transform.position, GetInverseProportionalityValue());
-    }
-
-    private float GetInverseProportionalityValue() =>
-        Exploder.MaxCubeSize * (Exploder.MinForceMultiplier / (transform.localScale.x + transform.localScale.y / 2));
+    private void Exploding() =>
+        _exploder.Explode
+        (transform.position, Math.GetInverseProportionalityValue(Exploder.MaxCubeSize, Exploder.MinForceMultiplier, transform.localScale.x));
 
     private void Init()
     {
