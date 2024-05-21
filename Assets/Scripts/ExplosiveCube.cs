@@ -42,7 +42,8 @@ public class ExplosiveCube : MonoBehaviour
 
     private void Exploding() =>
         _exploder.Explode
-        (transform.position, Math.GetInverseProportionalityValue(Exploder.MaxCubeSize, Exploder.MinForceMultiplier, transform.localScale.x));
+        (transform.position, 
+        Math.GetInverseProportionalityValue(Exploder.MaxCubeSize, Exploder.MinForceMultiplier, transform.localScale.x));
 
     private void Init()
     {
