@@ -20,7 +20,7 @@ public struct AreaScanner
         return cubesForExplode;
     }
 
-    public Collider[] GetColliders(Vector3 cubePosition) =>
+    public readonly Collider[] GetColliders(Vector3 cubePosition) =>
         Physics.OverlapBox(cubePosition, Radius);
     
 }
