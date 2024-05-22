@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class AreaScanner
+public struct AreaScanner
 {
     [SerializeField] private FloorArea _area;
 
-    public Vector3 Radius => _area.transform.localScale;
+    public readonly Vector3 Radius => _area.transform.localScale;
 
     public List<ExplosiveCube> GetCubesForExplode(Vector3 cubePosition)
     {
