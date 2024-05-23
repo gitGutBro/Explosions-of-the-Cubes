@@ -22,5 +22,4 @@ public struct AreaScanner
 
     public readonly Collider[] GetColliders(Vector3 cubePosition) =>
         Physics.OverlapBox(cubePosition, Radius);
-    
 }
