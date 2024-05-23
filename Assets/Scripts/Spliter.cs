@@ -2,16 +2,16 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class Spliter
+public struct Spliter
 {
     private const int MinSplitCount = 2;
     private const int MaxSplitCount = 6;
 
     [SerializeField][Range(1.5f, 3f)] private float _scaleDivider;
 
-    private int SplitCount => UnityEngine.Random.Range(MinSplitCount, MaxSplitCount + 1);
+    private readonly int SplitCount => UnityEngine.Random.Range(MinSplitCount, MaxSplitCount + 1);
 
-    public ExplosiveCube[] GetCubesForSplit(ExplosiveCube template)
+    public readonly ExplosiveCube[] GetCubesForSplit(ExplosiveCube template)
     {
         DivideScale(template);
 
@@ -23,6 +23,6 @@ public class Spliter
         return cubesForSplit;
     }
 
-    private void DivideScale(ExplosiveCube cube) =>
+    private readonly void DivideScale(ExplosiveCube cube) =>
         cube.transform.localScale /= _scaleDivider;
 }
