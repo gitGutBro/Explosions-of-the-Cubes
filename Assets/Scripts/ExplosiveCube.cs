@@ -8,7 +8,6 @@ public class ExplosiveCube : MonoBehaviour
     [SerializeField] private Spliter _spliter;
 
     private Renderer _renderer;
-    private Stainer _stainer;
 
     public Rigidbody Rigidbody { get; private set; }
 
@@ -49,7 +48,5 @@ public class ExplosiveCube : MonoBehaviour
     {
         _renderer = GetComponent<Renderer>();
         Rigidbody = GetComponent<Rigidbody>();
-
-        _stainer = new();
     }
 }
