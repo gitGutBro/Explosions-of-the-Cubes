@@ -18,8 +18,8 @@ public class ExplosiveCube : MonoBehaviour
     private void OnMouseDown() =>
         ExplosivelySplitUp();
 
-    public void ChangeColor() =>
-        _renderer.material.color = _stainer.GetRandomColor();
+    private void ChangeColor() =>
+        _renderer.material.color = Random.ColorHSV();
 
     private void ExplosivelySplitUp()
     {
