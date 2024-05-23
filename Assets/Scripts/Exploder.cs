@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Exploder
+public struct Exploder
 {
     public const float MinForceMultiplier = 1f;
     public const float MaxCubeSize = 10f;
@@ -14,7 +14,7 @@ public class Exploder
 
     [field: SerializeField] public AreaScanner Scanner { get; private set; }
 
-    public void Explode(Vector3 explodePoint, float forceMultiplier)
+    public readonly void Explode(Vector3 explodePoint, float forceMultiplier)
     {
         List<ExplosiveCube> cubeForExplode = Scanner.GetCubesForExplode(explodePoint);
 
