@@ -9,7 +9,7 @@ public struct AreaScanner
 
     public readonly Vector3 Radius => _area.transform.localScale;
 
-    public List<ExplosiveCube> GetCubesForExplode(Vector3 cubePosition)
+    public readonly List<ExplosiveCube> GetCubesForExplode(Vector3 cubePosition)
     {
         List<ExplosiveCube> cubesForExplode = new();
 

@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _exploder:
-    _radius: 119.5
+    _radius: 157.1
     _force: 80
     <Scanner>k__BackingField:
       _area: {fileID: 0}
